@@ -33,9 +33,19 @@ def parse_args():
     parser.add_argument("--title", default=None, help="graph title; default is the encoder model name")
     parser.add_argument("--dataset", default="dbpedia-entity", choices=list(BEIR_DATASETS))
     parser.add_argument("--split", default="test", choices=["train", "validation", "test"])
-    parser.add_argument("--max-queries", type=int, default=config.MAX_QUERIES)
-    parser.add_argument("--max-docs", type=int, default=config.MAX_DOCS)
-    parser.add_argument("--full", action="store_true", help="use the full split and corpus")
+    parser.add_argument(
+        "--max-queries",
+        type=int,
+        default=config.TEST_MAX_QUERIES,
+        help="queries to sample; omit for every query in the split",
+    )
+    parser.add_argument(
+        "--max-docs",
+        type=int,
+        default=config.TEST_MAX_DOCS,
+        help="corpus cap: all golds plus random distractors (default 100000)",
+    )
+    parser.add_argument("--full", action="store_true", help="use every query and the full 4.63M corpus")
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--seed", type=int, default=config.SEED)
@@ -187,7 +197,14 @@ def main():
     data_dir = args.data_dir or spec["data_dir"]
     max_queries = None if args.full else args.max_queries
     max_docs = None if args.full else args.max_docs
-    print(f"loading {args.dataset} split={args.split} on {device}")
+    if args.full:
+        print(f"loading {args.dataset} split={args.split} FULL corpus on {device}")
+    else:
+        q_desc = "all split queries" if not max_queries else f"{max_queries} queries"
+        print(
+            f"loading {args.dataset} split={args.split} sample: {q_desc}, "
+            f"up to {max_docs} docs (golds + distractors) on {device}"
+        )
     corpus, queries, qrels = load_beir(
         dataset=args.dataset,
         split=args.split,
@@ -224,6 +241,9 @@ def main():
         "corpus": len(corpus),
         "queries": len(queries),
         "vectors": len(texts),
+        "full": args.full,
+        "max_queries": max_queries,
+        "max_docs": max_docs,
         "chunk": args.chunk,
         "metrics": metrics,
     }

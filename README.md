@@ -22,7 +22,20 @@ python -c "from data_loader import prepare_beir; prepare_beir('hotpotqa'); prepa
 python -c "from model_loader import prepare_model; prepare_model()"
 ```
 
-Hard negatives for training (needs Arrow; skip if `data/hotpotqa/hard_negatives/train.jsonl` already exists):
+Hard negatives for training (skip if `data/hotpotqa/hard_negatives/train.jsonl` already exists). Needs Apache Arrow.
+
+Ubuntu:
+
+```bash
+sudo apt update
+sudo apt install -y g++ pkg-config wget ca-certificates lsb-release
+wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+sudo apt install -y ./apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb
+sudo apt update
+sudo apt install -y libarrow-dev
+```
+
+macOS: `brew install apache-arrow`
 
 ```bash
 make -C training
@@ -46,11 +59,13 @@ HotpotQA cache test is part of `train.py`. DBpedia (after training):
 python training/test_dbpedia.py --model runs/<run_id>
 ```
 
-Defaults to CUDA. `--model` can be the run folder or `projection_head.pt`. Writes `metrics.csv`, `metrics.png`, `results.json` under the run directory.
+Defaults to CUDA, every test query, and 100k docs (all golds plus random distractors). `--model` can be the run folder or `projection_head.pt`. Writes `metrics.csv`, `metrics.png`, `results.json` under the run directory.
 
 ```bash
 python training/test_dbpedia.py --model runs/<run_id> --full --batch-size 512
 ```
+
+`--full` encodes the entire 4.63M corpus and is much slower.
 
 BM25 / cosine baseline on a dataset:
 

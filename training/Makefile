@@ -1,8 +1,18 @@
-CXX ?= clang++
-ARROW_PREFIX ?= /opt/homebrew/opt/apache-arrow
-CXXFLAGS ?= -O3 -DNDEBUG -std=c++17 -march=native -Wall -Wextra
-CPPFLAGS += -I$(ARROW_PREFIX)/include -I/opt/homebrew/include
-LDFLAGS += -L$(ARROW_PREFIX)/lib -Wl,-rpath,$(ARROW_PREFIX)/lib -larrow
+CXX ?= c++
+CXXFLAGS ?= -O3 -DNDEBUG -std=c++20 -march=native -Wall -Wextra
+
+ARROW_PC := $(shell pkg-config --exists arrow && echo yes)
+HOMEBREW_ARROW := /opt/homebrew/opt/apache-arrow
+
+ifeq ($(ARROW_PC),yes)
+  CPPFLAGS += $(shell pkg-config --cflags arrow)
+  LDFLAGS += $(shell pkg-config --libs arrow)
+else ifneq ($(wildcard $(HOMEBREW_ARROW)/include/arrow/api.h),)
+  CPPFLAGS += -I$(HOMEBREW_ARROW)/include
+  LDFLAGS += -L$(HOMEBREW_ARROW)/lib -Wl,-rpath,$(HOMEBREW_ARROW)/lib -larrow
+else
+  $(error Apache Arrow not found. On Ubuntu: sudo apt install -y g++ pkg-config libarrow-dev)
+endif
 
 BIN = mine_hard_negatives
 
