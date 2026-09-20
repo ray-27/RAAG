@@ -16,12 +16,17 @@ def resolve_device(device: str | None = None) -> str:
     import torch
 
     device = device or config.DEVICE
-    if device == "mps" and not (
-        torch.backends.mps.is_available() and torch.backends.mps.is_built()
-    ):
-        print("MPS not available, using cpu")
+    if device == "cuda" and torch.cuda.is_available():
+        return "cuda"
+    mps = getattr(torch.backends, "mps", None)
+    if device == "mps" and mps is not None and mps.is_available() and mps.is_built():
+        return "mps"
+    if device == "cpu":
         return "cpu"
-    return device
+    picked = config.pick_device()
+    if device != picked:
+        print(f"{device} not available, using {picked}")
+    return picked
 
 
 def prepare_model(model_name: str | None = None, device: str | None = None):

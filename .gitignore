@@ -5,7 +5,10 @@ venv/
 .env
 .DS_Store
 data/
+dbpedia/
+runs/
 models/
+training/mine_hard_negatives
 *.npy
 *.pt
 *.bin

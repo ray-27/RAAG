@@ -5,7 +5,22 @@ from pathlib import Path
 import numpy as np
 from tqdm import tqdm
 
-from config import DATA_DIR, MAX_DOCS, MAX_QUERIES, SEED, SPLIT
+from config import DATA_DIR, DBPEDIA_DIR, MAX_DOCS, MAX_QUERIES, SEED, SPLIT
+
+BEIR_DATASETS = {
+    "hotpotqa": {
+        "corpus": ("BeIR/hotpotqa", "corpus"),
+        "queries": ("BeIR/hotpotqa", "queries"),
+        "qrels": "BeIR/hotpotqa-qrels",
+        "data_dir": DATA_DIR,
+    },
+    "dbpedia-entity": {
+        "corpus": ("BeIR/dbpedia-entity", "corpus"),
+        "queries": ("BeIR/dbpedia-entity", "queries"),
+        "qrels": "BeIR/dbpedia-entity-qrels",
+        "data_dir": DBPEDIA_DIR,
+    },
+}
 
 
 def _field(row, *names):
@@ -65,16 +80,19 @@ def _save_local(ds, path: Path) -> None:
     shutil.move(str(tmp), str(path))
 
 
-def prepare_hotpotqa(data_dir: str | Path = DATA_DIR):
+def prepare_beir(dataset: str = "hotpotqa", data_dir: str | Path | None = None):
     from datasets import load_dataset, load_from_disk
 
-    data_dir = Path(data_dir)
+    if dataset not in BEIR_DATASETS:
+        raise ValueError(f"Unknown dataset '{dataset}'. Available: {list(BEIR_DATASETS)}")
+    spec = BEIR_DATASETS[dataset]
+    data_dir = Path(data_dir) if data_dir else spec["data_dir"]
     data_dir.mkdir(parents=True, exist_ok=True)
 
     loaders = {
-        "corpus": lambda: load_dataset("BeIR/hotpotqa", "corpus", split="corpus"),
-        "queries": lambda: load_dataset("BeIR/hotpotqa", "queries", split="queries"),
-        "qrels": lambda: load_dataset("BeIR/hotpotqa-qrels"),
+        "corpus": lambda: load_dataset(*spec["corpus"], split="corpus"),
+        "queries": lambda: load_dataset(*spec["queries"], split="queries"),
+        "qrels": lambda: load_dataset(spec["qrels"]),
     }
 
     local = {}
@@ -89,6 +107,10 @@ def prepare_hotpotqa(data_dir: str | Path = DATA_DIR):
         _save_local(ds, path)
         local[name] = ds
     return local
+
+
+def prepare_hotpotqa(data_dir: str | Path = DATA_DIR):
+    return prepare_beir("hotpotqa", data_dir)
 
 
 def _load_qrels(ds, max_queries: int | None, seed: int):
@@ -119,7 +141,7 @@ def _load_queries(ds, qrels: dict[str, dict[str, int]]):
                 break
     missing = needed - set(queries)
     if missing:
-        raise ValueError(f"Missing {len(missing)} queries in HotpotQA queries split")
+        raise ValueError(f"Missing {len(missing)} queries in the queries split")
     return queries
 
 
@@ -173,14 +195,21 @@ def _load_corpus(ds, qrels: dict[str, dict[str, int]], max_docs: int | None, see
     return corpus
 
 
-def load_hotpotqa(
+def load_beir(
+    dataset: str = "hotpotqa",
     split: str = SPLIT,
     max_queries: int | None = MAX_QUERIES,
     max_docs: int | None = MAX_DOCS,
     seed: int = SEED,
-    data_dir: str | Path = DATA_DIR,
+    data_dir: str | Path | None = None,
 ):
-    local = prepare_hotpotqa(data_dir)
+    spec = BEIR_DATASETS.get(dataset)
+    if spec is None:
+        raise ValueError(f"Unknown dataset '{dataset}'. Available: {list(BEIR_DATASETS)}")
+    local = prepare_beir(dataset, data_dir or spec["data_dir"])
+    if split not in local["qrels"]:
+        available = list(local["qrels"].keys()) if hasattr(local["qrels"], "keys") else []
+        raise ValueError(f"split '{split}' not in qrels. Available: {available}")
     qrels = _load_qrels(local["qrels"][split], max_queries, seed)
     queries = _load_queries(local["queries"], qrels)
     corpus = _load_corpus(local["corpus"], qrels, max_docs, seed)
@@ -194,3 +223,20 @@ def load_hotpotqa(
             keep_queries[qid] = queries[qid]
 
     return corpus, keep_queries, keep_qrels
+
+
+def load_hotpotqa(
+    split: str = SPLIT,
+    max_queries: int | None = MAX_QUERIES,
+    max_docs: int | None = MAX_DOCS,
+    seed: int = SEED,
+    data_dir: str | Path = DATA_DIR,
+):
+    return load_beir(
+        "hotpotqa",
+        split=split,
+        max_queries=max_queries,
+        max_docs=max_docs,
+        seed=seed,
+        data_dir=data_dir,
+    )

@@ -1,0 +1,279 @@
+{
+  "source": "BeIR/hotpotqa train split",
+  "note": "Three gold passages of different kinds. Each is relevant for at least 5 different training questions. Each question also lists its full gold set (HotpotQA is usually 2 docs).",
+  "examples": [
+    {
+      "kind": "person",
+      "gold_doc": {
+        "doc_id": "25433",
+        "title": "Ronald Reagan",
+        "text": "Ronald Wilson Reagan ( ; February 6, 1911 – June 5, 2004) was an American statesman and actor who served as the 40th President of the United States from 1981 to 1989. Before his presidency, he was the 33rd Governor of California, from 1967 to 1975, after a career as a Hollywood actor and union leader."
+      },
+      "n_train_queries_sharing_this_doc": 19,
+      "queries": [
+        {
+          "query_id": "5abd08e1554299700f9d7984",
+          "question": "Which New York daily had an editor who counted among his heros the 40th president of the United States.",
+          "gold_docs": [
+            {
+              "doc_id": "8849427",
+              "title": "Seth Lipsky",
+              "text": "Seth Lipsky (born 1946) is the founder and editor of the \"New York Sun\", an independent conservative daily in New York City that ceased its print edition on September 30, 2008. Lipsky counts Ronald Reagan, Margaret Thatcher, Winston Churchill, Ariel Sharon, and Milton Friedman among his intellectual and ideological heroes. He has a long history of working in the newspaper business, including a stint for the \"Wall Street Journal\" in Asia and Belgium. He has also written several invited articles and guest opinions for \"The New York Times\"."
+            },
+            {
+              "doc_id": "25433",
+              "title": "Ronald Reagan",
+              "text": "Ronald Wilson Reagan ( ; February 6, 1911 – June 5, 2004) was an American statesman and actor who served as the 40th President of the United States from 1981 to 1989. Before his presidency, he was the 33rd Governor of California, from 1967 to 1975, after a career as a Hollywood actor and union leader."
+            }
+          ]
+        },
+        {
+          "query_id": "5abbdcee554299642a094b6e",
+          "question": "What senator delivered the 1980 speech that criticized both a former actor turned 40th American president, and rebuked the then incumbent president?",
+          "gold_docs": [
+            {
+              "doc_id": "51774735",
+              "title": "The Dream Shall Never Die",
+              "text": "\"The Dream Shall Never Die\" was a speech delivered by U.S. Senator Ted Kennedy at the Democratic National Convention on August 12, 1980. In the address, Kennedy defended post-World War II liberalism, advocated for a national healthcare insurance model, criticized former actor and Republican presidential nominee Ronald Reagan, and implicitly rebuked incumbent President Jimmy Carter (to whom he had conceded the Democratic nomination only the night before) for his more moderate political stances. It has been remembered by some as Kennedy's best speech, and one of the most influential orations of the era."
+            },
+            {
+              "doc_id": "25433",
+              "title": "Ronald Reagan",
+              "text": "Ronald Wilson Reagan ( ; February 6, 1911 – June 5, 2004) was an American statesman and actor who served as the 40th President of the United States from 1981 to 1989. Before his presidency, he was the 33rd Governor of California, from 1967 to 1975, after a career as a Hollywood actor and union leader."
+            }
+          ]
+        },
+        {
+          "query_id": "5a85d6065542997175ce205c",
+          "question": "Barbara Staff was co-chairman of the Texas Presidential campaign for the statesman who was from what state?",
+          "gold_docs": [
+            {
+              "doc_id": "31134788",
+              "title": "Barbara Staff",
+              "text": "Barbara Ruth Wright Staff (born August 26, 1924) is a retired Republican political activist from Plano, Texas. She was co-chairman of her state's 1976 Ronald Reagan presidential primary campaign."
+            },
+            {
+              "doc_id": "25433",
+              "title": "Ronald Reagan",
+              "text": "Ronald Wilson Reagan ( ; February 6, 1911 – June 5, 2004) was an American statesman and actor who served as the 40th President of the United States from 1981 to 1989. Before his presidency, he was the 33rd Governor of California, from 1967 to 1975, after a career as a Hollywood actor and union leader."
+            }
+          ]
+        },
+        {
+          "query_id": "5abd040c5542992ac4f381a7",
+          "question": "Of what State was the politician featured in the book Reagan's War, the Governor ?",
+          "gold_docs": [
+            {
+              "doc_id": "1027559",
+              "title": "Reagan's War",
+              "text": "Reagan's War is a book by Peter Schweizer crediting Ronald Reagan with winning the Cold War against Communism. It recounts Reagan's long series of struggles with communists, starting in Hollywood union politics and ending in the White House. It uses \"secret documents obtained from archives in Russia, Germany, Poland, Hungary and the United States.\""
+            },
+            {
+              "doc_id": "25433",
+              "title": "Ronald Reagan",
+              "text": "Ronald Wilson Reagan ( ; February 6, 1911 – June 5, 2004) was an American statesman and actor who served as the 40th President of the United States from 1981 to 1989. Before his presidency, he was the 33rd Governor of California, from 1967 to 1975, after a career as a Hollywood actor and union leader."
+            }
+          ]
+        },
+        {
+          "query_id": "5a75456455429929fddd8517",
+          "question": "Michael Levine was a media counsel to which president born in 1911?",
+          "gold_docs": [
+            {
+              "doc_id": "44973649",
+              "title": "Michael Levine (publicist)",
+              "text": "Michael Levine is an American writer and public relations expert. He is the author of numerous books on public relations including \"Guerrilla P.R.\" He has represented 58 Academy Award winners, 34 Grammy Award winners, and 43 New York Times best-sellers, with such names that include Michael Jackson, Barbra Streisand, and George Carlin among many others. His work has included non paid media counsel to former presidents Ronald Reagan, George H. W. Bush, and Bill Clinton. Levine also appeared in , the 2011 documentary by Morgan Spurlock."
+            },
+            {
+              "doc_id": "25433",
+              "title": "Ronald Reagan",
+              "text": "Ronald Wilson Reagan ( ; February 6, 1911 – June 5, 2004) was an American statesman and actor who served as the 40th President of the United States from 1981 to 1989. Before his presidency, he was the 33rd Governor of California, from 1967 to 1975, after a career as a Hollywood actor and union leader."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "institution",
+      "gold_doc": {
+        "doc_id": "22693330",
+        "title": "Baylor University",
+        "text": "Baylor University (BU) is a private Baptist university in Waco, Texas. Chartered in 1845 by the last Congress of the Republic of Texas, it is the oldest continuously-operating university in Texas and one of the first educational institutions west of the Mississippi River in the United States. Located on the banks of the Brazos River next to I-35, between the Dallas-Fort Worth Metroplex and Austin, the university's 1,000-acre campus is the largest Baptist university campus in the world."
+      },
+      "n_train_queries_sharing_this_doc": 22,
+      "queries": [
+        {
+          "query_id": "5a735f5c5542991f29ee2dc4",
+          "question": "Baylor University and Duke University, are both what type of universities?",
+          "gold_docs": [
+            {
+              "doc_id": "22693330",
+              "title": "Baylor University",
+              "text": "Baylor University (BU) is a private Baptist university in Waco, Texas. Chartered in 1845 by the last Congress of the Republic of Texas, it is the oldest continuously-operating university in Texas and one of the first educational institutions west of the Mississippi River in the United States. Located on the banks of the Brazos River next to I-35, between the Dallas-Fort Worth Metroplex and Austin, the university's 1,000-acre campus is the largest Baptist university campus in the world."
+            },
+            {
+              "doc_id": "53273",
+              "title": "Duke University",
+              "text": "Duke University is a private research university located in Durham, North Carolina. Founded by Methodists and Quakers in the present-day town of Trinity in 1838, the school moved to Durham in 1892. In 1924, tobacco and electric power industrialist James Buchanan Duke established The Duke Endowment, at which time the institution changed its name to honor his deceased father, Washington Duke."
+            }
+          ]
+        },
+        {
+          "query_id": "5ab62f56554299710c8d1e73",
+          "question": "Is Ohio State University or Baylor University a private college?",
+          "gold_docs": [
+            {
+              "doc_id": "22217",
+              "title": "Ohio State University",
+              "text": "The Ohio State University, commonly referred to as Ohio State or OSU, is a large, primarily residential, public university in Columbus, Ohio. Founded in 1870 as a land-grant university and ninth university in Ohio with the Morrill Act of 1862, the university was originally known as the Ohio Agricultural and Mechanical College (Mech). The college began with a focus on training students in various agricultural and mechanical disciplines but was developed into a comprehensive university under the direction of then Governor (later, President) Rutherford B. Hayes, and in 1878 the Ohio General Assembly passed a law changing the name to \"The Ohio State University\". It has since grown into the third-largest university campus in the United States. Along with its main campus in Columbus, Ohio State also operates a regional campus system with regional campuses in Lima, Mansfield, Marion, Newark, and Wooster."
+            },
+            {
+              "doc_id": "22693330",
+              "title": "Baylor University",
+              "text": "Baylor University (BU) is a private Baptist university in Waco, Texas. Chartered in 1845 by the last Congress of the Republic of Texas, it is the oldest continuously-operating university in Texas and one of the first educational institutions west of the Mississippi River in the United States. Located on the banks of the Brazos River next to I-35, between the Dallas-Fort Worth Metroplex and Austin, the university's 1,000-acre campus is the largest Baptist university campus in the world."
+            }
+          ]
+        },
+        {
+          "query_id": "5a7bdc7e5542997c3ec97296",
+          "question": "What city and state was J.C. Ewing in when he served as coach for Baylor University?",
+          "gold_docs": [
+            {
+              "doc_id": "14561513",
+              "title": "J. C. Ewing",
+              "text": "Joseph Chalmers Ewing (June 1, 1875 – April 5, 1965) was an American football and baseball coach. He served as the third head football coach at Baylor University, coaching in 1902 and compiling a record of 2–4–2. Ewing was also the first head baseball coach at Baylor, coaching the 1902 season and tallying a mark of 5–9."
+            },
+            {
+              "doc_id": "22693330",
+              "title": "Baylor University",
+              "text": "Baylor University (BU) is a private Baptist university in Waco, Texas. Chartered in 1845 by the last Congress of the Republic of Texas, it is the oldest continuously-operating university in Texas and one of the first educational institutions west of the Mississippi River in the United States. Located on the banks of the Brazos River next to I-35, between the Dallas-Fort Worth Metroplex and Austin, the university's 1,000-acre campus is the largest Baptist university campus in the world."
+            }
+          ]
+        },
+        {
+          "query_id": "5ae408fd55429970de88d893",
+          "question": "Where is the university located for which Daryl Gardener played college football?",
+          "gold_docs": [
+            {
+              "doc_id": "4323985",
+              "title": "Daryl Gardener",
+              "text": "Daryl Ronald Gardener (born February 25, 1973 in Baltimore, Maryland) is a former American football defensive tackle in the National Football League for the Miami Dolphins, Washington Redskins, and Denver Broncos. He played college football at Baylor University and was drafted in the first round (20th overall) of the 1996 NFL Draft."
+            },
+            {
+              "doc_id": "22693330",
+              "title": "Baylor University",
+              "text": "Baylor University (BU) is a private Baptist university in Waco, Texas. Chartered in 1845 by the last Congress of the Republic of Texas, it is the oldest continuously-operating university in Texas and one of the first educational institutions west of the Mississippi River in the United States. Located on the banks of the Brazos River next to I-35, between the Dallas-Fort Worth Metroplex and Austin, the university's 1,000-acre campus is the largest Baptist university campus in the world."
+            }
+          ]
+        },
+        {
+          "query_id": "5a862d655542991e771815aa",
+          "question": "The Michael Polanyi Center (MPC) at which private Baptist university in Waco, Texas, was the first center at a research university exclusively dedicated to intelligent design study?",
+          "gold_docs": [
+            {
+              "doc_id": "1426640",
+              "title": "Michael Polanyi Center",
+              "text": "The Michael Polanyi Center (MPC) at Baylor University, Texas was the first center at a research university exclusively dedicated to intelligent design study. It was founded in 1999 \"with the primary aim of advancing the"
+            },
+            {
+              "doc_id": "22693330",
+              "title": "Baylor University",
+              "text": "Baylor University (BU) is a private Baptist university in Waco, Texas. Chartered in 1845 by the last Congress of the Republic of Texas, it is the oldest continuously-operating university in Texas and one of the first educational institutions west of the Mississippi River in the United States. Located on the banks of the Brazos River next to I-35, between the Dallas-Fort Worth Metroplex and Austin, the university's 1,000-acre campus is the largest Baptist university campus in the world."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "film",
+      "gold_doc": {
+        "doc_id": "39345917",
+        "title": "Big Hero 6 (film)",
+        "text": "Big Hero 6 is a 2014 American 3D computer-animated superhero-comedy film produced by Walt Disney Animation Studios and released by Walt Disney Pictures. Loosely based on the superhero team of the same name by Marvel Comics, the film is the 54th Disney animated feature film. Directed by Don Hall and Chris Williams, the film tells the story of Hiro Hamada, a young robotics prodigy who forms a superhero team to combat a masked villain. The film features the voices of Scott Adsit, Ryan Potter, Daniel Henney, T.J. Miller, Jamie Chung, Damon Wayans, Jr., Genesis Rodriguez, Alan Tudyk, James Cromwell, and Maya Rudolph."
+      },
+      "n_train_queries_sharing_this_doc": 18,
+      "queries": [
+        {
+          "query_id": "5ab3c3b155429969a97a81b6",
+          "question": "Which film was released first, Big Hero 6 or Muppet Treasure Island?",
+          "gold_docs": [
+            {
+              "doc_id": "39345917",
+              "title": "Big Hero 6 (film)",
+              "text": "Big Hero 6 is a 2014 American 3D computer-animated superhero-comedy film produced by Walt Disney Animation Studios and released by Walt Disney Pictures. Loosely based on the superhero team of the same name by Marvel Comics, the film is the 54th Disney animated feature film. Directed by Don Hall and Chris Williams, the film tells the story of Hiro Hamada, a young robotics prodigy who forms a superhero team to combat a masked villain. The film features the voices of Scott Adsit, Ryan Potter, Daniel Henney, T.J. Miller, Jamie Chung, Damon Wayans, Jr., Genesis Rodriguez, Alan Tudyk, James Cromwell, and Maya Rudolph."
+            },
+            {
+              "doc_id": "1458752",
+              "title": "Muppet Treasure Island",
+              "text": "Muppet Treasure Island is a 1996 American musical adventure comedy film based on Robert Louis Stevenson's \"Treasure Island\". It is the fifth feature film to star The Muppets, and was directed by Brian Henson."
+            }
+          ]
+        },
+        {
+          "query_id": "5ab36a2c55429969a97a8144",
+          "question": "Which animated super hero film,The Incredibles or Big Hero 6, is directed by Brad Bird?",
+          "gold_docs": [
+            {
+              "doc_id": "565879",
+              "title": "The Incredibles",
+              "text": "The Incredibles is a 2004 American computer-animated superhero film written and directed by Brad Bird, produced by Pixar Animation Studios, and released by Walt Disney Pictures. The film follows a family of superheroes who are forced to hide their powers and live a quiet suburban life. Mr. Incredible's desire to help people draws the entire family into a battle with Syndrome, a former fan who now plots to wipe out all superheroes with his killer robot."
+            },
+            {
+              "doc_id": "39345917",
+              "title": "Big Hero 6 (film)",
+              "text": "Big Hero 6 is a 2014 American 3D computer-animated superhero-comedy film produced by Walt Disney Animation Studios and released by Walt Disney Pictures. Loosely based on the superhero team of the same name by Marvel Comics, the film is the 54th Disney animated feature film. Directed by Don Hall and Chris Williams, the film tells the story of Hiro Hamada, a young robotics prodigy who forms a superhero team to combat a masked villain. The film features the voices of Scott Adsit, Ryan Potter, Daniel Henney, T.J. Miller, Jamie Chung, Damon Wayans, Jr., Genesis Rodriguez, Alan Tudyk, James Cromwell, and Maya Rudolph."
+            }
+          ]
+        },
+        {
+          "query_id": "5ab9d307554299232ef4a21a",
+          "question": "Are Big Hero 6 an American movie and The Book of Masters a Russian movie both produced by Disney?",
+          "gold_docs": [
+            {
+              "doc_id": "39345917",
+              "title": "Big Hero 6 (film)",
+              "text": "Big Hero 6 is a 2014 American 3D computer-animated superhero-comedy film produced by Walt Disney Animation Studios and released by Walt Disney Pictures. Loosely based on the superhero team of the same name by Marvel Comics, the film is the 54th Disney animated feature film. Directed by Don Hall and Chris Williams, the film tells the story of Hiro Hamada, a young robotics prodigy who forms a superhero team to combat a masked villain. The film features the voices of Scott Adsit, Ryan Potter, Daniel Henney, T.J. Miller, Jamie Chung, Damon Wayans, Jr., Genesis Rodriguez, Alan Tudyk, James Cromwell, and Maya Rudolph."
+            },
+            {
+              "doc_id": "26284851",
+              "title": "The Book of Masters",
+              "text": "The Book of Masters (Russian: Книга Мастеров , \"Kniga Masterov\" ) is a Russian language fantasy film produced by the CIS division of the Disney company and directed by Vadim Sokolovsky. It was released in Russia on October 29, 2009. The story is based on Russian fairy tales, such as \"The Stone Flower\" and other stories from \"The Malachite Casket\" collection. It is Disney's first film made in Russia."
+            }
+          ]
+        },
+        {
+          "query_id": "5a7fa3885542994857a76796",
+          "question": "Are Big Hero 6 and Summer Magic both films?",
+          "gold_docs": [
+            {
+              "doc_id": "3054601",
+              "title": "Summer Magic",
+              "text": "Summer Magic is a 1963 Walt Disney Productions film starring Hayley Mills, Burl Ives, and Dorothy McGuire in a story about a Boston widow and her children taking up residence in a small town in Maine. The film was based on the novel \"Mother Carey's Chickens\" by Kate Douglas Wiggin and was directed by James Neilson. This was the fourth of six film Mills did for Disney, and the young actress received a Golden Globe nomination for her work here."
+            },
+            {
+              "doc_id": "39345917",
+              "title": "Big Hero 6 (film)",
+              "text": "Big Hero 6 is a 2014 American 3D computer-animated superhero-comedy film produced by Walt Disney Animation Studios and released by Walt Disney Pictures. Loosely based on the superhero team of the same name by Marvel Comics, the film is the 54th Disney animated feature film. Directed by Don Hall and Chris Williams, the film tells the story of Hiro Hamada, a young robotics prodigy who forms a superhero team to combat a masked villain. The film features the voices of Scott Adsit, Ryan Potter, Daniel Henney, T.J. Miller, Jamie Chung, Damon Wayans, Jr., Genesis Rodriguez, Alan Tudyk, James Cromwell, and Maya Rudolph."
+            }
+          ]
+        },
+        {
+          "query_id": "5a73991055429978a71e903a",
+          "question": "What movie is a family comedy produced by Walt Disney Productions, Big Hero 6 or Escape from the Dark?",
+          "gold_docs": [
+            {
+              "doc_id": "39345917",
+              "title": "Big Hero 6 (film)",
+              "text": "Big Hero 6 is a 2014 American 3D computer-animated superhero-comedy film produced by Walt Disney Animation Studios and released by Walt Disney Pictures. Loosely based on the superhero team of the same name by Marvel Comics, the film is the 54th Disney animated feature film. Directed by Don Hall and Chris Williams, the film tells the story of Hiro Hamada, a young robotics prodigy who forms a superhero team to combat a masked villain. The film features the voices of Scott Adsit, Ryan Potter, Daniel Henney, T.J. Miller, Jamie Chung, Damon Wayans, Jr., Genesis Rodriguez, Alan Tudyk, James Cromwell, and Maya Rudolph."
+            },
+            {
+              "doc_id": "27546286",
+              "title": "Escape from the Dark",
+              "text": "Escape from the Dark (American title: The Littlest Horse Thieves) is a 1976 British-American family drama film produced by Walt Disney Productions, directed by Charles Jarrott and starring Alastair Sim (in his final film role), Peter Barkworth and Maurice Colbourne."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
